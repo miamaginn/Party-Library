@@ -148,6 +148,7 @@
 
     if (r.section === "costumes") openOverlay(costumesView(party), "wide");
     else if (r.section === "decor") openOverlay(decorView(party), "wide");
+    else if (r.section === "prep" && party.prep) openOverlay(prepView(party, r.item), "wide");
     else if (r.section === "menu" && r.item) {
       const dish = party.menu.dishes.find((d) => d.id === r.item);
       dish ? openOverlay(recipeView(party, dish), "card") : go(`p/${party.slug}/menu`);
@@ -244,6 +245,13 @@
               <a class="entry__link" href="${base}/decor">Setting the Scene</a>
               <p class="hint">Everything I used, with links</p>
             </div>
+            ${p.prep ? `
+            ${divider}
+            <div class="entry">
+              <p class="label">Timeline &amp; Prep</p>
+              <a class="entry__link" href="${base}/prep">The Game Plan</a>
+              <p class="hint">Day-of timeline &amp; grocery list</p>
+            </div>` : ""}
             ${bat("bat--page")}
             <span class="folio">i</span>
           </section>
@@ -416,6 +424,81 @@
           <p class="lede">${esc(p.decor.intro)}</p>
         </header>
         ${sections}`
+    };
+  }
+
+  /* ---------- Timeline & prep ---------- */
+
+  function prepView(p, tab) {
+    const base = `#/p/${esc(p.slug)}/prep`;
+    const showGroceries = tab === "groceries";
+
+    const timeline = p.prep.timeline
+      .map(
+        (phase) => `
+        <section class="tl-phase">
+          <h3 class="tl-phase__title">${esc(phase.title)}</h3>
+          ${phase.subtitle ? `<p class="hint">${esc(phase.subtitle)}</p>` : ""}
+          <ol class="tl">
+            ${phase.steps.map((s) => `
+              <li class="tl__step${s.key ? " tl__step--key" : ""}">
+                <span class="tl__time">${esc(s.time)}</span>
+                <span class="tl__what">${esc(s.what)}</span>
+              </li>`).join("")}
+          </ol>
+          ${phase.note ? `<p class="notes"><em>Good to know:</em> ${esc(phase.note)}</p>` : ""}
+        </section>`
+      )
+      .join("");
+
+    const groceries = p.prep.groceries
+      .map(
+        (g, gi) => `
+        <section class="grocery-group">
+          <h3>${esc(g.section)}</h3>
+          <ul>
+            ${g.items.map((it, ii) => `<li><label><input type="checkbox" data-id="${gi}-${ii}"><span>${esc(it)}</span></label></li>`).join("")}
+          </ul>
+        </section>`
+      )
+      .join("");
+
+    return {
+      label: "Timeline & Prep",
+      html: `
+        <header class="overlay-head">
+          <p class="label">Timeline &amp; Prep</p>
+          <h2 class="display">The Game Plan</h2>
+          ${divider}
+          <p class="lede">${esc(p.prep.intro)}</p>
+        </header>
+        <nav class="tabs">
+          <a class="tab${showGroceries ? "" : " is-active"}" href="${base}">Timeline</a>
+          <a class="tab${showGroceries ? " is-active" : ""}" href="${base}/groceries">Grocery List</a>
+        </nav>
+        ${showGroceries
+          ? `<p class="hint grocery-note">${esc(p.prep.groceryNote)}</p>
+             <div class="grocery">${groceries}</div>
+             <p class="grocery-actions"><button class="text-link" type="button" data-clear>Clear all checks</button></p>`
+          : `<div class="timeline">${timeline}</div>`}`,
+      mount: showGroceries
+        ? (root) => {
+            // Checks live only in this viewer's browser
+            const key = `party-library:groceries:${p.slug}`;
+            const boxes = [...root.querySelectorAll(".grocery input")];
+            let saved = [];
+            try { saved = JSON.parse(localStorage.getItem(key) || "[]"); } catch {}
+            boxes.forEach((b) => (b.checked = saved.includes(b.dataset.id)));
+            const save = () => {
+              try { localStorage.setItem(key, JSON.stringify(boxes.filter((b) => b.checked).map((b) => b.dataset.id))); } catch {}
+            };
+            boxes.forEach((b) => b.addEventListener("change", save));
+            root.querySelector("[data-clear]").onclick = () => {
+              boxes.forEach((b) => (b.checked = false));
+              save();
+            };
+          }
+        : null
     };
   }
 

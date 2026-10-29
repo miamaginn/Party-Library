@@ -129,6 +129,76 @@ window.PARTIES = [
       ]
     },
 
+    prep: {
+      intro: "The plan for Friday, October 30: guests at 8:30, ready to greet them by 8:15.",
+      // key: true highlights a step
+      timeline: [
+        {
+          title: "Earlier in the Week",
+          steps: [
+            { time: "Sun – Wed", what: "Shop for everything on the grocery list. If the octopus is frozen, buy it now and move it to the fridge Wednesday night to thaw slowly." },
+            { time: "Wednesday", what: "Make the gnocchi dough, shape it, and freeze on a sheet pan, then bag. Cook straight from frozen; no thawing." }
+          ]
+        },
+        {
+          title: "Thursday",
+          subtitle: "The day before",
+          steps: [
+            { time: "Dessert", what: "Bake the flourless chocolate cake, cool completely, then wrap and refrigerate. It’s even better after a day." },
+            { time: "Eggs", what: "Hard boil and peel. Make the yolk filling and keep it in a piping or zip-top bag. Store whites and filling separately in the fridge." },
+            { time: "Chicken", what: "Mix the maple Dijon marinade and marinate the chicken overnight." },
+            { time: "Octopus", what: "Simmer until tender, cool in its liquid, and refrigerate." },
+            { time: "Skewers", what: "Cut the cheese, wash and dry the olives, and pick your “eyeball” components." }
+          ]
+        },
+        {
+          title: "Friday, Party Day",
+          subtitle: "Guests at 8:30 · ready by 8:15",
+          steps: [
+            { time: "Morning", what: "Pipe the deviled eggs, garnish and cover. Assemble the eyeball skewers. Both go back in the fridge." },
+            { time: "Afternoon", what: "Pick the sage leaves, grate the Parmesan, and chill the drinks." },
+            { time: "3:30 pm", what: "Set the table: tablecloth, candle holders and candlesticks, pumpkin name cards. Put the pumpkin pails on the string lights. Set out serving dishes and utensils with a sticky note for each dish." },
+            { time: "5:00 pm", what: "Reset the kitchen: wash up, then run and empty the dishwasher so it’s ready for after dinner." },
+            { time: "5:45 pm", what: "Move the chicken into its roasting dish skin-side up, spoon the marinade over, cover, and return it to the fridge." },
+            { time: "6:00 pm", what: "Finish the octopus: sear 2–3 minutes per side, toss with olive oil, lemon and smoked paprika, then plate, cover and refrigerate. It’s lovely served cool or at room temperature." },
+            { time: "6:20 pm", what: "Make the brown butter sage sauce in your large skillet and leave it in the pan off the heat. Fill the gnocchi pot with salted water, cover, and leave it on the stove." },
+            { time: "6:40 pm", what: "Whip the cream and refrigerate. Stack the dessert plates and forks. Final wipe-down of the kitchen." },
+            { time: "7:00 pm", what: "Get ready! 75 minutes, all yours.", key: true },
+            { time: "7:50 pm", what: "Two-minute break: preheat the oven to 425°F and take the chicken out of the fridge." },
+            { time: "8:15 pm", what: "Ready to receive. Chicken into the oven (timer: 40 minutes). Light the candles, switch on the string lights and music. Set out the skewers, deviled eggs and octopus. Take the cake out of the fridge and turn the gnocchi water on low.", key: true },
+            { time: "8:30 pm", what: "Guests arrive. Appetizers and drinks." },
+            { time: "8:55 pm", what: "Chicken out to rest under foil for 10 minutes. Rewarm the brown butter on low and bring the water to a boil." },
+            { time: "9:00 pm", what: "Boil the gnocchi from frozen (2–3 minutes, until they float), toss in the brown butter with Parmesan, and serve with the chicken. This is the only real cooking once guests are here." },
+            { time: "9:45 pm", what: "Dessert: slice the cake and add whipped cream, berries and a powdered sugar cobweb." }
+          ],
+          note: "The chicken roasts without searing so it can go in hands-free: skin-side up at 425°F for 35–40 minutes, until the skin is browned and the thickest piece reads 175°F. Slide it under the broiler for a minute if the skin needs more color."
+        }
+      ],
+      groceryNote: "Sized for about 6 guests. Check quantities against your recipes, and your pantry for staples. Tap an item to check it off; checks are saved on this device.",
+      groceries: [
+        {
+          section: "Produce",
+          items: ["Fresh sage (2 bunches)", "Fresh thyme or rosemary (1 bunch)", "Garlic (2 heads)", "Lemons (3)", "Cherry tomatoes (1 pint, optional for skewers)", "Fresh chives", "Berries for the cake (1–2 containers)"]
+        },
+        {
+          section: "Meat & Seafood",
+          items: ["Octopus (about 2 lbs, cooked or raw/frozen)", "Bone-in, skin-on chicken thighs (about 3 lbs)", "Salami or pepperoni (optional for skewers)"]
+        },
+        {
+          section: "Dairy & Eggs",
+          items: ["Eggs (2 dozen: 12 for deviled, a few for gnocchi, 4 for cake)", "Unsalted butter (1 lb)", "Parmesan (small wedge)", "Ricotta (15 oz, if your gnocchi recipe uses it)", "Mini mozzarella balls (2 containers, for the eyeballs)", "Heavy cream (small carton, for whipping)"]
+        },
+        {
+          section: "Pantry",
+          items: ["Canned pumpkin purée (15 oz, not pie filling)", "All-purpose flour", "Maple syrup (real)", "Dijon mustard and whole grain mustard", "Mayonnaise", "Apple cider vinegar", "Olive oil", "Bittersweet chocolate (8 oz)", "Unsweetened cocoa powder", "Granulated sugar", "Powdered sugar (for cobweb decor)", "Vanilla extract", "Nutmeg", "Smoked paprika", "Bay leaves", "Kosher salt and black pepper"]
+        },
+        {
+          section: "Skewers & Decor",
+          items: ["Green olives stuffed with pimento (jar, for the irises)", "Black olives (can, for the pupils)", "Long toothpicks or skewers"]
+        }
+      ]
+    },
+
     // A photo from the evening, e.g. "images/hollywood-halloween/evening.jpg"
     photo: { src: "", caption: "A scene from the evening" },
 
@@ -255,7 +325,7 @@ window.PARTIES = [
           hotspot: { left: 36.5, top: 67.0, width: 27, height: 3.6 },
           recipe: {
             serves: "6",
-            time: "45 minutes",
+            time: "50 minutes, plus marinating overnight",
             ingredients: [
               "8 bone-in, skin-on chicken thighs",
               "⅓ cup maple syrup",
@@ -266,11 +336,11 @@ window.PARTIES = [
               "Salt and pepper"
             ],
             steps: [
-              "Heat the oven to 425°F. Season the chicken all over with salt and pepper.",
-              "Whisk together the maple syrup, both mustards, garlic and thyme.",
-              "Sear the thighs skin side down in an ovenproof skillet until golden, then flip.",
-              "Pour the glaze over and roast for 25–30 minutes, basting once, until cooked through.",
-              "Rest 5 minutes and spoon the pan sauce over to serve."
+              "Whisk together the maple syrup, both mustards, garlic and thyme. Season the chicken with salt and pepper, coat it in the marinade, and refrigerate overnight.",
+              "Heat the oven to 425°F. Arrange the thighs skin-side up in a roasting dish and spoon the marinade over.",
+              "Roast for 35–40 minutes, basting once, until the skin is browned and the thickest piece reads 175°F.",
+              "If the skin needs more color, slide it under the broiler for a minute.",
+              "Rest 10 minutes under loose foil and spoon the pan juices over to serve."
             ],
             notes: ""
           }
