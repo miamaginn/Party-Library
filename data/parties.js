@@ -187,7 +187,7 @@ window.PARTIES = [
         },
         {
           section: "Dairy & Eggs",
-          items: ["Eggs (2 dozen: 12 for deviled, a few for gnocchi, 4 for cake)", "Unsalted butter (1 lb)", "Parmesan (small wedge)", "Ricotta (15 oz, if your gnocchi recipe uses it)", "Mini mozzarella balls (2 containers, for the eyeballs)", "Heavy cream (small carton, for whipping)"]
+          items: ["Eggs (2 dozen: 12 for deviled, a few for gnocchi, 4 for cake)", "Unsalted butter (1 lb)", "Parmesan (small wedge)","Mini mozzarella balls (2 containers, for the eyeballs)", "Heavy cream (small carton, for whipping)"]
         },
         {
           section: "Pantry",
@@ -298,17 +298,17 @@ window.PARTIES = [
             serves: "8",
             time: "1 hour 15 minutes",
             ingredients: [
-              "1⅓ cups pumpkin purée, blotted dry",
-              "1⅓ cups ricotta, drained",
+              "1 can (15 oz) pumpkin purée, blotted dry (about 1¾ cups)",
               "1 egg plus 1 yolk",
               "⅔ cup grated Parmesan, plus more to serve",
               "Pinch of nutmeg",
-              "About 2⅔ cups all-purpose flour",
+              "About 2½ cups all-purpose flour",
               "10 tbsp (1¼ sticks) butter",
               "A big handful of fresh sage leaves"
             ],
             steps: [
-              "Mix the pumpkin, ricotta, egg, Parmesan, nutmeg and a big pinch of salt.",
+              "Spread the pumpkin on paper towels and press out as much moisture as you can; drier pumpkin means less flour and lighter gnocchi.",
+              "Mix the pumpkin, egg, yolk, Parmesan, nutmeg and a big pinch of salt.",
               "Fold in flour a little at a time until you have a soft dough that barely sticks.",
               "Roll into ropes on a floured board and cut into 1-inch pillows.",
               "Boil in salted water; lift them out about 30 seconds after they float.",
