@@ -147,7 +147,10 @@
     document.title = `${party.title} · The Party Library`;
 
     if (r.section === "costumes") openOverlay(costumesView(party), "wide");
-    else if (r.section === "decor") openOverlay(decorView(party), "wide");
+    else if (r.section === "decor" && r.item) {
+      const g = findGallery(party, r.item);
+      g ? openOverlay(galleryView(party, g), "wide") : go(`p/${party.slug}/decor`);
+    } else if (r.section === "decor") openOverlay(decorView(party), "wide");
     else if (r.section === "prep" && party.prep) openOverlay(prepView(party, r.item), "wide");
     else if (r.section === "menu" && r.item) {
       const dish = party.menu.dishes.find((d) => d.id === r.item);
@@ -325,16 +328,13 @@
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape" || overlay.hidden) return;
     const r = route();
-    go(r.section === "menu" && r.item ? `p/${shown}/menu` : `p/${shown}`);
+    go((r.section === "menu" || r.section === "decor") && r.item ? `p/${shown}/${r.section}` : `p/${shown}`);
   });
 
-  /* ---------- Costume carousel ---------- */
+  /* ---------- Photo carousel (costumes, posters) ---------- */
 
-  function costumesView(p) {
-    const imgs = p.costume.images.length
-      ? p.costume.images
-      : [1, 2, 3].map((n) => ({ caption: `Inspiration no. ${n}` }));
-    const slides = imgs
+  function carousel(items) {
+    const slides = items
       .map(
         (img) => `
         <figure class="slide">
@@ -350,26 +350,19 @@
       .join("");
 
     return {
-      label: "Costume inspiration",
       html: `
-        <header class="overlay-head">
-          <p class="label">Costume Theme</p>
-          <h2 class="display">${esc(p.costume.theme)}</h2>
-          ${divider}
-          <p class="lede">${esc(p.costume.description)}</p>
-        </header>
         <div class="carousel">
           <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Previous">‹</button>
           <div class="carousel__viewport"><div class="carousel__track">${slides}</div></div>
           <button class="carousel__btn carousel__btn--next" type="button" aria-label="Next">›</button>
         </div>
-        <div class="carousel__dots">${imgs.map((_, i) => `<button type="button" aria-label="Go to image ${i + 1}"></button>`).join("")}</div>`,
+        <div class="carousel__dots">${items.map((_, i) => `<button type="button" aria-label="Go to image ${i + 1}"></button>`).join("")}</div>`,
       mount(root) {
         const track = root.querySelector(".carousel__track");
         const dots = [...root.querySelectorAll(".carousel__dots button")];
         let i = 0;
         const show = (n) => {
-          i = (n + imgs.length) % imgs.length;
+          i = (n + items.length) % items.length;
           track.style.transform = `translateX(${-i * 100}%)`;
           dots.forEach((d, k) => d.classList.toggle("is-active", k === i));
         };
@@ -395,22 +388,59 @@
     };
   }
 
+  function costumesView(p) {
+    const imgs = p.costume.images.length
+      ? p.costume.images
+      : [1, 2, 3].map((n) => ({ caption: `Inspiration no. ${n}` }));
+    const c = carousel(imgs);
+    return {
+      label: "Costume inspiration",
+      html: `
+        <header class="overlay-head">
+          <p class="label">Costume Theme</p>
+          <h2 class="display">${esc(p.costume.theme)}</h2>
+          ${divider}
+          <p class="lede">${esc(p.costume.description)}</p>
+        </header>
+        ${c.html}`,
+      mount: c.mount
+    };
+  }
+
   /* ---------- Decor ---------- */
 
+  const findGallery = (p, id) => p.decor.sections.map((s) => s.gallery).find((g) => g && g.id === id);
+
   function decorView(p) {
+    const base = `#/p/${esc(p.slug)}/decor`;
     const item = (it) => `
         <article class="decor-item">
           ${it.image ? `<img src="${esc(it.image)}" alt="${esc(it.name)}" loading="lazy">` : ""}
           <h4>${esc(it.name)}</h4>
           ${it.note ? `<p>${esc(it.note)}</p>` : ""}
-          ${it.link ? `<a class="text-link" href="${esc(it.link)}" target="_blank" rel="noopener">${it.store ? `Shop at ${esc(it.store)}` : "Find it here"} ↗</a>` : ""}
+          ${it.link
+            ? `<a class="text-link" href="${esc(it.link)}" target="_blank" rel="noopener">${esc(it.linkLabel || (it.store ? `Shop at ${it.store}` : "Find it here"))} ↗</a>`
+            : it.pending ? `<p class="hint">${esc(it.pending)}</p>` : ""}
         </article>`;
+    const feature = (s) => `
+        <div class="decor-feature">
+          <figure class="decor-feature__photo">
+            ${s.photo && s.photo.src
+              ? `<img src="${esc(s.photo.src)}" alt="${esc(s.photo.caption || s.title)}" loading="lazy">`
+              : `<div class="placeholder">${bat()}<span>${esc((s.photo && s.photo.placeholder) || "Photo coming soon")}</span></div>`}
+          </figure>
+          <div class="decor-feature__body">
+            ${s.text ? `<p>${esc(s.text)}</p>` : ""}
+            ${s.gallery ? `<a class="pill-link" href="${base}/${esc(s.gallery.id)}">${esc(s.gallery.label)} <span aria-hidden="true">›</span></a>` : ""}
+          </div>
+        </div>`;
     const sections = p.decor.sections
       .map(
         (s) => `
         <section class="decor-section">
           <h3 class="decor-section__title">${esc(s.title)}</h3>
-          <div class="decor-grid">${s.items.map(item).join("")}</div>
+          ${s.text || s.photo || s.gallery ? feature(s) : ""}
+          ${s.items && s.items.length ? `<div class="decor-grid">${s.items.map(item).join("")}</div>` : ""}
         </section>`
       )
       .join("");
@@ -424,6 +454,23 @@
           <p class="lede">${esc(p.decor.intro)}</p>
         </header>
         ${sections}`
+    };
+  }
+
+  function galleryView(p, g) {
+    const c = carousel(g.images);
+    return {
+      label: g.title,
+      html: `
+        <a class="text-link back-link" href="#/p/${esc(p.slug)}/decor">← Back to the decor</a>
+        <header class="overlay-head">
+          <p class="label">Decor</p>
+          <h2 class="display">${esc(g.title)}</h2>
+          ${divider}
+          ${g.description ? `<p class="lede">${esc(g.description)}</p>` : ""}
+        </header>
+        ${c.html}`,
+      mount: c.mount
     };
   }
 

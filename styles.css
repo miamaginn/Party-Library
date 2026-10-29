@@ -537,6 +537,38 @@ a.spine.is-pulling { transform: translateY(-60px) rotate(-4deg) scale(1.04); tra
   font-size: 1.9rem;
   text-align: center;
 }
+.decor-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: 2rem;
+  align-items: center;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+.decor-feature__photo { margin: 0; }
+.decor-feature__photo img, .decor-feature__photo .placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 8px solid #fff;
+  outline: 1px solid var(--paper-edge);
+  box-shadow: 0 10px 22px -14px rgba(40, 28, 12, 0.5);
+}
+.decor-feature__body p { margin: 0 0 1.2rem; font-size: 1.1rem; line-height: 1.55; }
+
+.pill-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.1rem;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s;
+}
+.pill-link:hover, .pill-link:focus-visible { background: var(--ink); color: var(--paper); }
+
 .decor-item h4 { margin: 0 0 0.3rem; font-size: 1.35rem; font-weight: 600; }
 .decor-item p { margin: 0 0 0.6rem; color: var(--ink-soft); }
 
@@ -762,6 +794,7 @@ a.spine.is-pulling { transform: translateY(-60px) rotate(-4deg) scale(1.04); tra
 
   .recipe-cols { grid-template-columns: 1fr; gap: 1.25rem; }
   .tl__step { grid-template-columns: 4.75rem 1fr; gap: 0.75rem; }
+  .decor-feature { grid-template-columns: 1fr; gap: 1.25rem; }
   .carousel__btn { position: absolute; z-index: 2; top: 40%; }
   .carousel__btn--prev { left: -0.4rem; }
   .carousel__btn--next { right: -0.4rem; }

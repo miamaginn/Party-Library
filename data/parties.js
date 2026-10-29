@@ -120,12 +120,36 @@ window.PARTIES = [
             { name: "Pumpkin Name Card Holders", note: "I got a mix of orange and gold.", link: "https://a.co/d/06akYvT2", store: "Amazon" },
             { name: "Candle Holders", note: "I bought these years ago and get so much use out of them. I love these!", link: "https://a.co/d/0cnl3vA7", store: "Amazon" },
             { name: "Candlesticks", note: "I prefer unscented for dinner parties.", link: "https://a.co/d/042HjAmx", store: "Amazon" },
-            { name: "Gold Star / Moon Decor", note: "I got these last year for my birthday party and had some left over to adorn the table!", link: "https://a.co/d/0bHq4eNC", store: "Amazon" }
+            { name: "Gold Star / Moon Decor", note: "I got these last year for my birthday party and had some left over to adorn the table!", link: "https://www.amazon.com/Decor365-Decorations-Birthday-Graduation-Celestial/dp/B07SXC3QCT", store: "Amazon" }
           ]
+        },
+        {
+          title: "Menus",
+          text: "For the menus, I had one-side as classic Halloween movie posters and the other side for the menu. I got a little crafty and printed these out one-sided and glued each page to a piece of construction paper. In hindsight, I would use a printing service and have them done on card stock to save time.",
+          // Add the photo later, e.g. src: "images/hollywood-halloween/menus.jpg"
+          photo: { src: "", caption: "The printed menus", placeholder: "Photo of the menus coming soon" },
+          gallery: {
+            id: "posters",
+            label: "Browse the movie posters",
+            title: "The Movie Posters",
+            description: "The classic Halloween movie posters on the back of each menu.",
+            images: [
+              { src: "images/hollywood-halloween/posters/poster-01.webp", title: "The Texas Chainsaw Massacre" },
+              { src: "images/hollywood-halloween/posters/poster-02.webp", title: "A Nightmare on Elm Street" },
+              { src: "images/hollywood-halloween/posters/poster-03.webp", title: "The Exorcist" },
+              { src: "images/hollywood-halloween/posters/poster-04.webp", title: "Halloween" },
+              { src: "images/hollywood-halloween/posters/poster-05.webp", title: "Scream" },
+              { src: "images/hollywood-halloween/posters/poster-06.webp", title: "The Shining" },
+              { src: "images/hollywood-halloween/posters/poster-07.webp", title: "Poltergeist" },
+              { src: "images/hollywood-halloween/posters/poster-08.webp", title: "Frankenstein" }
+            ]
+          }
         },
         {
           title: "Around the Room",
           items: [
+            // Paste the Spotify playlist URL into link when it's ready
+            { name: "The Twilight Zone & Halloween Music", note: "The Twilight Zone playing on the TV, with a Halloween playlist over it.", link: "", linkLabel: "Listen on Spotify", pending: "Spotify playlist coming soon" },
             { name: "Mini Pumpkin Pails", note: "Used these to cover the bulbs on our string lights.", link: "https://www.pavilions.com/shop/pd/signature-select-mini-pumpkin-pails-8-ct/971299417", store: "Pavilions" }
           ]
         }
