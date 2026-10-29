@@ -564,6 +564,7 @@
             ${r.serves ? `<div><dt>Serves</dt><dd>${esc(r.serves)}</dd></div>` : ""}
             ${r.time ? `<div><dt>Time</dt><dd>${esc(r.time)}</dd></div>` : ""}
           </dl>
+          ${r.video ? `<a class="video-link" href="${esc(r.video)}" target="_blank" rel="noopener"><span class="video-link__icon" aria-hidden="true">▶</span>Recipe inspired by this video ↗</a>` : ""}
           ${divider}
           <div class="recipe-cols">
             <section>

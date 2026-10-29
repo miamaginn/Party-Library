@@ -1,6 +1,8 @@
 /*
   THE PARTY LIBRARY — all site content lives here.
 
+  A recipe can link the video it's based on with  video: "https://..."
+
   To add a new party: copy the whole { ... } block for Hollywood Halloween,
   paste it after it (separated by a comma), and change the details.
   Put that party's images in /images/<slug>/ and point to them below.
@@ -117,7 +119,8 @@ window.PARTIES = [
             { name: "Tablecloth", note: "", link: "https://a.co/d/0iUzLSOA", store: "Amazon" },
             { name: "Pumpkin Name Card Holders", note: "I got a mix of orange and gold.", link: "https://a.co/d/06akYvT2", store: "Amazon" },
             { name: "Candle Holders", note: "I bought these years ago and get so much use out of them. I love these!", link: "https://a.co/d/0cnl3vA7", store: "Amazon" },
-            { name: "Candlesticks", note: "I prefer unscented for dinner parties.", link: "https://a.co/d/042HjAmx", store: "Amazon" }
+            { name: "Candlesticks", note: "I prefer unscented for dinner parties.", link: "https://a.co/d/042HjAmx", store: "Amazon" },
+            { name: "Gold Star / Moon Decor", note: "I got these last year for my birthday party and had some left over to adorn the table!", link: "https://a.co/d/0bHq4eNC", store: "Amazon" }
           ]
         },
         {
@@ -160,19 +163,19 @@ window.PARTIES = [
             { time: "Afternoon", what: "Pick the sage leaves, grate the Parmesan, and chill the drinks." },
             { time: "3:30 pm", what: "Set the table: tablecloth, candle holders and candlesticks, pumpkin name cards. Put the pumpkin pails on the string lights. Set out serving dishes and utensils with a sticky note for each dish." },
             { time: "5:00 pm", what: "Reset the kitchen: wash up, then run and empty the dishwasher so it’s ready for after dinner." },
-            { time: "5:45 pm", what: "Move the chicken into its roasting dish skin-side up, spoon the marinade over, cover, and return it to the fridge." },
+            { time: "5:45 pm", what: "Move the chicken into its roasting dish in a single layer, spoon the marinade over, cover, and return it to the fridge." },
             { time: "6:00 pm", what: "Finish the octopus: sear 2–3 minutes per side, toss with olive oil, lemon and smoked paprika, then plate, cover and refrigerate. It’s lovely served cool or at room temperature." },
             { time: "6:20 pm", what: "Make the brown butter sage sauce in your large skillet and leave it in the pan off the heat. Fill the gnocchi pot with salted water, cover, and leave it on the stove." },
             { time: "6:40 pm", what: "Whip the cream and refrigerate. Stack the dessert plates and forks. Final wipe-down of the kitchen." },
             { time: "7:00 pm", what: "Get ready! 75 minutes, all yours.", key: true },
-            { time: "7:50 pm", what: "Two-minute break: preheat the oven to 425°F and take the chicken out of the fridge." },
-            { time: "8:15 pm", what: "Ready to receive. Chicken into the oven (timer: 40 minutes). Light the candles, switch on the string lights and music. Set out the skewers, deviled eggs and octopus. Take the cake out of the fridge and turn the gnocchi water on low.", key: true },
-            { time: "8:30 pm", what: "Guests arrive. Appetizers and drinks." },
-            { time: "8:55 pm", what: "Chicken out to rest under foil for 10 minutes. Rewarm the brown butter on low and bring the water to a boil." },
+            { time: "7:50 pm", what: "Two-minute break: take the chicken out of the fridge to take the chill off." },
+            { time: "8:15 pm", what: "Ready to receive. Preheat the oven to 425°F. Light the candles, switch on the string lights and music. Set out the skewers, deviled eggs and octopus. Take the cake out of the fridge and turn the gnocchi water on low.", key: true },
+            { time: "8:30 pm", what: "Guests arrive. Slide the chicken into the oven (timer: 20 minutes), then appetizers and drinks." },
+            { time: "8:50 pm", what: "Check the chicken: once the thickest piece reads 165°F (give it up to 5 more minutes), rest it under foil. Rewarm the brown butter on low and bring the water to a boil." },
             { time: "9:00 pm", what: "Boil the gnocchi from frozen (2–3 minutes, until they float), toss in the brown butter with Parmesan, and serve with the chicken. This is the only real cooking once guests are here." },
             { time: "9:45 pm", what: "Dessert: slice the cake and add whipped cream, berries and a powdered sugar cobweb." }
           ],
-          note: "The chicken roasts without searing so it can go in hands-free: skin-side up at 425°F for 35–40 minutes, until the skin is browned and the thickest piece reads 175°F. Slide it under the broiler for a minute if the skin needs more color."
+          note: "Chicken breasts cook quickly and dry out if they wait, so they go in as guests arrive: 20–25 minutes at 425°F, until the thickest piece reads 165°F. That timing lands them right as the gnocchi is ready."
         }
       ],
       groceryNote: "Sized for 8 guests. Check quantities against your recipes, and your pantry for staples. Tap an item to check it off; checks are saved on this device.",
@@ -183,7 +186,7 @@ window.PARTIES = [
         },
         {
           section: "Meat & Seafood",
-          items: ["Octopus (about 3 lbs, cooked or raw/frozen)", "Bone-in, skin-on chicken thighs (12, about 4½ lbs)", "Salami or pepperoni (optional for skewers)"]
+          items: ["Octopus (about 3 lbs, cooked or raw/frozen)", "Boneless, skinless chicken breasts (about 4 lbs, 6 large)", "Salami or pepperoni (optional for skewers)"]
         },
         {
           section: "Dairy & Eggs",
@@ -216,6 +219,7 @@ window.PARTIES = [
           recipe: {
             serves: "8 (16 skewers)",
             time: "20 minutes",
+            video: "https://www.instagram.com/reel/DdJ_qGgCKaL/",
             ingredients: [
               "32 fresh mozzarella balls (ciliegine)",
               "16 black olives, sliced into rounds",
@@ -326,9 +330,10 @@ window.PARTIES = [
           hotspot: { left: 36.5, top: 67.0, width: 27, height: 3.6 },
           recipe: {
             serves: "8",
-            time: "50 minutes, plus marinating overnight",
+            time: "35 minutes, plus marinating overnight",
+            video: "https://www.instagram.com/reel/DC9wE3wPmKj/",
             ingredients: [
-              "12 bone-in, skin-on chicken thighs (about 4½ lb)",
+              "About 4 lb boneless, skinless chicken breasts (6 large)",
               "½ cup maple syrup",
               "⅓ cup Dijon mustard",
               "1½ tbsp whole-grain mustard",
@@ -338,12 +343,12 @@ window.PARTIES = [
             ],
             steps: [
               "Whisk together the maple syrup, both mustards, garlic and thyme. Season the chicken with salt and pepper, coat it in the marinade, and refrigerate overnight.",
-              "Heat the oven to 425°F. Arrange the thighs skin-side up with a little space between them (a sheet pan or two dishes, so they roast instead of steam) and spoon the marinade over.",
-              "Roast for 35–40 minutes, basting once, until the skin is browned and the thickest piece reads 175°F.",
-              "If the skin needs more color, slide it under the broiler for a minute.",
-              "Rest 10 minutes under loose foil and spoon the pan juices over to serve."
+              "Heat the oven to 425°F. Arrange the breasts in a single layer with a little space between them (a sheet pan or two dishes) and spoon the marinade over.",
+              "Roast for 20–25 minutes, basting once, until the thickest piece reads 165°F.",
+              "If you'd like more color on top, slide it under the broiler for a minute.",
+              "Rest 5–10 minutes under loose foil, slice, and spoon the pan juices over to serve."
             ],
-            notes: ""
+            notes: "Before marinating, pound any thick breasts to an even thickness so they all finish cooking at the same time."
           }
         },
         {

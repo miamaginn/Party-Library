@@ -680,6 +680,32 @@ a.spine.is-pulling { transform: translateY(-60px) rotate(-4deg) scale(1.04); tra
 .meta dt { font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-soft); }
 .meta dd { margin: 0; font-style: italic; }
 
+.video-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1rem;
+  padding: 0.35rem 0.9rem 0.35rem 0.4rem;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.video-link:hover, .video-link:focus-visible { background: var(--ink); color: var(--paper); }
+.video-link__icon {
+  display: grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.6rem;
+  padding-left: 2px;
+}
+.video-link:hover .video-link__icon { background: var(--paper); color: var(--ink); }
+
 .recipe-cols { display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; }
 .recipe-cols h3 {
   margin: 0 0 0.6rem;
