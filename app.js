@@ -436,9 +436,12 @@
     const timeline = p.prep.timeline
       .map(
         (phase) => `
-        <section class="tl-phase">
-          <h3 class="tl-phase__title">${esc(phase.title)}</h3>
-          ${phase.subtitle ? `<p class="hint">${esc(phase.subtitle)}</p>` : ""}
+        <details class="tl-phase">
+          <summary class="tl-phase__head">
+            <span class="tl-phase__title">${esc(phase.title)}</span>
+            ${phase.subtitle ? `<span class="tl-phase__sub">${esc(phase.subtitle)}</span>` : ""}
+            <span class="tl-phase__count">${phase.steps.length} steps</span>
+          </summary>
           <ol class="tl">
             ${phase.steps.map((s) => `
               <li class="tl__step${s.key ? " tl__step--key" : ""}">
@@ -447,7 +450,7 @@
               </li>`).join("")}
           </ol>
           ${phase.note ? `<p class="notes"><em>Good to know:</em> ${esc(phase.note)}</p>` : ""}
-        </section>`
+        </details>`
       )
       .join("");
 
